@@ -18,6 +18,12 @@ module SilkIconHelper
     image_tag SilkIconHelper.where_i_put_blank_image,
               options.merge(:style => offset_style(icon_name).to_s+options[:style].to_s)
   end
+  
+  def silk_icon_link_to(icon, url, options = {})
+    options[:class] = options[:class].to_s.concat(" silk_icon_link").strip
+    link_to(silk_icon(icon), url, options)
+  end
+  alias :icon_link_to :silk_icon_link_to
 
   def offset_style(name)
     begin
